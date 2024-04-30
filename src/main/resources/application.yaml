@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: hello-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ndgndg91/hello-config # public repo
+          default-label: main # main branch
+          timeout: 5
+          clone-on-start: true # when start service, clone to local from remote
+          force-pull: true # when detecting local clone is behind, always pull remote
+          search-paths: "**"
+
+server:
+  port: 8888
+  tomcat:
+    connection-timeout: 2s
+    keep-alive-timeout: 15
+    threads:
+      max: 100
+      min-spare: 10
